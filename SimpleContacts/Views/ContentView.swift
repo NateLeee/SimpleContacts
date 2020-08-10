@@ -19,10 +19,12 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(contacts, id: \.self) { contact in
-                NavigationLink(destination: ContactDetailView()) {
-                    Image(systemName: "person.circle")
-                    Text("Name: \(contact.name ?? "Unknown Name")")
+            List {
+                ForEach(contacts, id: \.self) { contact in
+                    NavigationLink(destination: ContactDetailView(contact: contact)) {
+                        Image(systemName: "person.circle")
+                        Text("Name: \(contact.name ?? "Unknown Name")")
+                    }
                 }
             }
             .navigationBarTitle("Simple Contacts")
