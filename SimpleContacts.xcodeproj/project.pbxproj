@@ -60,11 +60,11 @@
 			children = (
 				FA1E75F024E0F8F60019CF28 /* AppDelegate.swift */,
 				FA1E75F224E0F8F60019CF28 /* SceneDelegate.swift */,
-				FA1E75F724E0F8F60019CF28 /* ContentView.swift */,
+				FA1E760824E0F90B0019CF28 /* Models */,
+				FA1E760724E0F9040019CF28 /* Views */,
 				FA1E75F924E0F8F70019CF28 /* Assets.xcassets */,
 				FA1E75FE24E0F8F70019CF28 /* LaunchScreen.storyboard */,
 				FA1E760124E0F8F70019CF28 /* Info.plist */,
-				FA1E75F424E0F8F60019CF28 /* SimpleContacts.xcdatamodeld */,
 				FA1E75FB24E0F8F70019CF28 /* Preview Content */,
 			);
 			path = SimpleContacts;
@@ -76,6 +76,22 @@
 				FA1E75FC24E0F8F70019CF28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA1E760724E0F9040019CF28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E75F724E0F8F60019CF28 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA1E760824E0F90B0019CF28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E75F424E0F8F60019CF28 /* SimpleContacts.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
