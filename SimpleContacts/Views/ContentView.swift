@@ -11,7 +11,9 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
-    @FetchRequest(entity: Contact.entity(), sortDescriptors: []) var contacts: FetchedResults<Contact>
+    @FetchRequest(entity: Contact.entity(), sortDescriptors: [
+        NSSortDescriptor(keyPath: \Contact.name, ascending: true),
+    ]) var contacts: FetchedResults<Contact>
     
     @State private var showingAddContactView = false
     
