@@ -10,13 +10,38 @@ import SwiftUI
 import CoreData
 
 struct ContactDetailView: View {
-    let contact: Contact
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingDeleteAlert = false
     
+    let contact: Contact
     
     var body: some View {
         GeometryReader { geometry in
             Text("Name: \(self.contact.name ?? "Unknown Name...")")
         }
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                self.deleteThisContact()
+                }, secondaryButton: .cancel()
+            )
+        }
+        .navigationBarItems(trailing: Button(action: {
+            self.showingDeleteAlert = true
+        }) {
+            Image(systemName: "trash")
+                .padding([.leading, .top, .bottom])
+                // .border(Color.blue, width: 1)
+        })
+    }
+    
+    // Custom Funcs
+    
+    func deleteThisContact() {
+        moc.delete(contact)
+        try? self.moc.save()
+        
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
