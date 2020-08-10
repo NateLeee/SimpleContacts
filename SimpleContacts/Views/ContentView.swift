@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(0 ..< 18) { index in
+            List(0 ..< 18, id: \.self) { index in
                 NavigationLink(destination: ContactDetailView()) {
                     Image(systemName: "person.circle")
                     Text("No. \(index) Row.")
