@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-
     @State private var showingAddContactView = false
     
     @FetchRequest(entity: Contact.entity(), sortDescriptors: []) var contacts: FetchedResults<Contact>
@@ -29,7 +27,6 @@ struct ContentView: View {
             }, label: {
                 Image(systemName: "plus")
                     .padding([.leading, .top, .bottom])
-                    // .border(Color.blue, width: 1)
             }))
         }
         .sheet(isPresented: $showingAddContactView) {

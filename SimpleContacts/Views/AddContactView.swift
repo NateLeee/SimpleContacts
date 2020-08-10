@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct AddContactView: View {
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var blurredImage: Image?
     @State private var image: Image?
     @State private var name = ""
@@ -69,6 +72,13 @@ struct AddContactView: View {
             .navigationBarTitle("Add Contact", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 // Add this contact
+                let newContact = Contact(context: self.moc)
+                newContact.imageId = UUID()
+                newContact.name = self.name
+                try? self.moc.save()
+                
+                self.presentationMode.wrappedValue.dismiss()
+                
             }, label: {
                 Text("Add")
             })
