@@ -17,6 +17,7 @@ struct AddContactView: View {
     @State private var uiImage: UIImage?
     @State private var name = ""
     @State private var showingImagePickerView = false
+    @State private var showingMap = false
     
     var addBtnDisabled: Bool {
         // If photo and name are both there, then false.
@@ -65,7 +66,19 @@ struct AddContactView: View {
                 Form {
                     Section(header: Text("Edit Name")) {
                         TextField("Name", text: $name)
+                        
+                        Toggle(isOn: $showingMap.animation()) {
+                            Text("Remember this location / Show Map")
+                        }
+                        
+                        if (self.showingMap) {
+                            MapView()
+                                .frame(height: 180)
+                                .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                        }
                     }
+                    
+                    
                 }
                 
                 Spacer()
@@ -79,8 +92,7 @@ struct AddContactView: View {
                 newContact.name = self.name
                 try? self.moc.save()
                 
-                // TODO: - Save image to the disk
-                // parent.imageId = UUID()
+                // Save image to the disk
                 let docDirUrl = Utilities.getDocumentsDirectory()
                     .appendingPathComponent(uuid.uuidString)
                 if let jpegData = self.uiImage?.jpegData(compressionQuality: 0.8) {

@@ -21,6 +21,7 @@
 		FAD1251124E147A900E13564 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */; };
 		FAD1251324E14AAC00E13564 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1251224E14AAC00E13564 /* Utilities.swift */; };
 		FAF0249024E181EE0055F3F7 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0248F24E181EE0055F3F7 /* LocationFetcher.swift */; };
+		FAF0249224E188420055F3F7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0249124E188420055F3F7 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FAD1251224E14AAC00E13564 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FAF0248F24E181EE0055F3F7 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		FAF0249124E188420055F3F7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				FA1E75F724E0F8F60019CF28 /* ContentView.swift */,
 				FA1E760924E0FB5C0019CF28 /* AddContactView.swift */,
+				FAF0249124E188420055F3F7 /* MapView.swift */,
 				FA1E760D24E1018A0019CF28 /* ImagePickerView.swift */,
 				FA1E760B24E0FB750019CF28 /* ContactDetailView.swift */,
 			);
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA1E760C24E0FB750019CF28 /* ContactDetailView.swift in Sources */,
+				FAF0249224E188420055F3F7 /* MapView.swift in Sources */,
 				FA1E75F124E0F8F60019CF28 /* AppDelegate.swift in Sources */,
 				FA1E760A24E0FB5C0019CF28 /* AddContactView.swift in Sources */,
 				FAD1251124E147A900E13564 /* Contact+CoreDataProperties.swift in Sources */,
