@@ -9,9 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingAddContactView = false
+    @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(entity: Contact.entity(), sortDescriptors: []) var contacts: FetchedResults<Contact>
+    
+    @State private var showingAddContactView = false
+    
+    
     
     var body: some View {
         NavigationView {
@@ -30,7 +34,7 @@ struct ContentView: View {
             }))
         }
         .sheet(isPresented: $showingAddContactView) {
-            AddContactView()
+            AddContactView().environment(\.managedObjectContext, self.moc)
         }
     }
 }
