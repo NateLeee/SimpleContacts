@@ -19,6 +19,7 @@
 		FA1E760E24E1018A0019CF28 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E760D24E1018A0019CF28 /* ImagePickerView.swift */; };
 		FAD1251024E147A900E13564 /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1250E24E147A900E13564 /* Contact+CoreDataClass.swift */; };
 		FAD1251124E147A900E13564 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */; };
+		FAD1251324E14AAC00E13564 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1251224E14AAC00E13564 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FA1E760D24E1018A0019CF28 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		FAD1250E24E147A900E13564 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FAD1251224E14AAC00E13564 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				FA1E75F224E0F8F60019CF28 /* SceneDelegate.swift */,
 				FA1E760824E0F90B0019CF28 /* Models */,
 				FA1E760724E0F9040019CF28 /* Views */,
+				FAD1251424E14AAF00E13564 /* Helpers */,
 				FA1E75F924E0F8F70019CF28 /* Assets.xcassets */,
 				FA1E75FE24E0F8F70019CF28 /* LaunchScreen.storyboard */,
 				FA1E760124E0F8F70019CF28 /* Info.plist */,
@@ -107,6 +110,14 @@
 				FA1E75F424E0F8F60019CF28 /* SimpleContacts.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FAD1251424E14AAF00E13564 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FAD1251224E14AAC00E13564 /* Utilities.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				FA1E760E24E1018A0019CF28 /* ImagePickerView.swift in Sources */,
 				FA1E75F824E0F8F60019CF28 /* ContentView.swift in Sources */,
 				FAD1251024E147A900E13564 /* Contact+CoreDataClass.swift in Sources */,
+				FAD1251324E14AAC00E13564 /* Utilities.swift in Sources */,
 				FA1E75F324E0F8F60019CF28 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

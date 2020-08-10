@@ -23,7 +23,9 @@ struct ContentView: View {
             List {
                 ForEach(contacts, id: \.self) { contact in
                     NavigationLink(destination: ContactDetailView(contact: contact)) {
+                        // TODO: - Read jpeg image
                         Image(systemName: "person.circle")
+                        
                         Text("Name: \(contact.wrappedName)")
                     }
                 }

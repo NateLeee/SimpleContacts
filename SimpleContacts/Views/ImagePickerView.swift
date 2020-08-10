@@ -17,6 +17,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var blurredImage: Image?
     @Binding var image: Image?
+    // @Binding var imageId: UUID?
     
     
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -35,6 +36,14 @@ struct ImagePickerView: UIViewControllerRepresentable {
             guard let blurredImage = applyFilter(filterName: "CIGaussianBlur", uiImage: uiImage, inputRadius: 21) else { return }
             
             parent.image = Image(uiImage: uiImage)
+            // Save to document dir
+            // parent.imageId = UUID()
+            let docDirUrl = Utilities.getDocumentsDirectory()
+                .appendingPathComponent("avatars")
+            if let jpegData = uiImage.jpegData(compressionQuality: 0.8) {
+                try? jpegData.write(to: docDirUrl, options: [.atomicWrite, .completeFileProtection])
+            }
+            
             parent.blurredImage = blurredImage
             
             // Dismiss this picker view
