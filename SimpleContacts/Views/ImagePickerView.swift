@@ -12,12 +12,26 @@ import SwiftUI
 struct ImagePickerView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIImagePickerController
     
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var image: Image?
+    
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        let parent: ImagePickerView
+        var parent: ImagePickerView
         
         init(_ parent: ImagePickerView) {
             self.parent = parent
         }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let uiImage = info[.originalImage] as? UIImage else {
+                return
+            }
+            
+            parent.image = Image(uiImage: uiImage)
+            // Dismiss this picker view
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+        
     }
     
     func makeCoordinator() -> Coordinator {

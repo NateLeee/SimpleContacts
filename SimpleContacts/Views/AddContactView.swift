@@ -30,9 +30,15 @@ struct AddContactView: View {
                             .foregroundColor(.secondary)
                             .cornerRadius(6)
                         
-                        Text("Select a photo")
-                            .foregroundColor(.white)
-                            .shadow(color: .black, radius: 1, x: 0, y: 1)
+                        image?
+                            .resizable()
+                            .scaledToFit()
+                        
+                        if (image == nil) {
+                            Text("Select a photo")
+                                .foregroundColor(.white)
+                                .shadow(color: .black, radius: 1, x: 0, y: 1)
+                        }
                     }
                     .onTapGesture {
                         // Bring up UIImagePickerController
@@ -40,7 +46,7 @@ struct AddContactView: View {
                     }
                     .padding(.top, 9)
                 }
-                .frame(height: 240)
+                .frame(height: 210)
                 .padding(.horizontal)
                 
                 Form {
@@ -60,7 +66,7 @@ struct AddContactView: View {
                 .disabled(self.addBtnDisabled)
             )
                 .sheet(isPresented: $showingImagePickerView) {
-                    ImagePickerView()
+                    ImagePickerView(image: self.$image)
             }
         }
     }
