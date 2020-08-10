@@ -23,4 +23,8 @@ extension Contact {
     public var wrappedName: String {
         name ?? "Unknown Name"
     }
+    
+    public var wrappedImageId: String {
+        imageId?.uuidString ?? "Unknown UUID"
+    }
 }

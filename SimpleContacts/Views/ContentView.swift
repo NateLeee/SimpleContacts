@@ -24,7 +24,11 @@ struct ContentView: View {
                 ForEach(contacts, id: \.self) { contact in
                     NavigationLink(destination: ContactDetailView(contact: contact)) {
                         // TODO: - Read jpeg image
-                        Image(systemName: "person.circle")
+                        // Image(systemName: "person.circle")
+                        Image(uiImage: self.getUIImageBy(contact.wrappedImageId))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80)
                         
                         Text("Name: \(contact.wrappedName)")
                     }
@@ -45,6 +49,12 @@ struct ContentView: View {
     }
     
     // Custom Funcs
+    
+    func getUIImageBy(_ uuid: String) -> UIImage {
+        let fileUrl = Utilities.getDocumentsDirectory().appendingPathComponent("avatars")
+        let data = try! Data(contentsOf: fileUrl)
+        return UIImage(data: data)!
+    }
     
     /// Delete selected row(s)
     func deleteRows(offsets: IndexSet) {
