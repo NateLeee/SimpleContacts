@@ -14,6 +14,7 @@ struct AddContactView: View {
     
     @State private var blurredImage: Image?
     @State private var image: Image?
+    @State private var uiImage: UIImage?
     @State private var name = ""
     @State private var showingImagePickerView = false
     
@@ -73,9 +74,18 @@ struct AddContactView: View {
             .navigationBarItems(trailing: Button(action: {
                 // Add this contact
                 let newContact = Contact(context: self.moc)
-                newContact.imageId = UUID()
+                let uuid = UUID()
+                newContact.imageId = uuid
                 newContact.name = self.name
                 try? self.moc.save()
+                
+                // TODO: - Save image to the disk
+                // parent.imageId = UUID()
+                let docDirUrl = Utilities.getDocumentsDirectory()
+                    .appendingPathComponent(uuid.uuidString)
+                if let jpegData = self.uiImage?.jpegData(compressionQuality: 0.8) {
+                    try? jpegData.write(to: docDirUrl, options: [.atomicWrite, .completeFileProtection])
+                }
                 
                 self.presentationMode.wrappedValue.dismiss()
                 
@@ -85,7 +95,7 @@ struct AddContactView: View {
                 .disabled(self.addBtnDisabled)
             )
                 .sheet(isPresented: $showingImagePickerView) {
-                    ImagePickerView(blurredImage: self.$blurredImage, image: self.$image)
+                    ImagePickerView(image: self.$image, uiImage: self.$uiImage, blurredImage: self.$blurredImage)
             }
         }
     }
