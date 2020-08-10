@@ -18,7 +18,6 @@ struct ContentView: View {
     @State private var showingAddContactView = false
     
     
-    
     var body: some View {
         NavigationView {
             List {
@@ -28,9 +27,10 @@ struct ContentView: View {
                         Text("Name: \(contact.name ?? "Unknown Name")")
                     }
                 }
+                .onDelete(perform: deleteRows(offsets:))
             }
             .navigationBarTitle("Simple Contacts")
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: contacts.count == 0 ? nil : EditButton(), trailing: Button(action: {
                 self.showingAddContactView = true
             }, label: {
                 Image(systemName: "plus")
@@ -40,6 +40,20 @@ struct ContentView: View {
         .sheet(isPresented: $showingAddContactView) {
             AddContactView().environment(\.managedObjectContext, self.moc)
         }
+    }
+    
+    // Custom Funcs
+    
+    /// Delete selected row(s)
+    func deleteRows(offsets: IndexSet) {
+        for offset in offsets {
+            let contact = contacts[offset]
+            
+            moc.delete(contact)
+        }
+        
+        // save the context
+        try? moc.save()
     }
 }
 
