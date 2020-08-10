@@ -18,7 +18,18 @@ struct ContactDetailView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Text("Name: \(self.contact.wrappedName)")
+            ScrollView(.vertical) {
+                VStack {
+                    Utilities.getImageBy(self.contact.wrappedImageId)?
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                    
+                    Text("Contact Name: \(self.contact.wrappedName)")
+                    
+                    Spacer()
+                }
+            }
         }
         .alert(isPresented: $showingDeleteAlert) {
             Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {

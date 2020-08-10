@@ -6,7 +6,7 @@
 //  Copyright © 2020 Nate Lee. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 class Utilities {
     static func getDocumentsDirectory() -> URL {
@@ -15,5 +15,13 @@ class Utilities {
 
         // just send back the first one, which ought to be the only one
         return paths[0]
+    }
+    
+    static func getImageBy(_ uuidString: String) -> Image? {
+        let fileUrl = Utilities.getDocumentsDirectory().appendingPathComponent(uuidString)
+        if let data = try? Data(contentsOf: fileUrl) {
+            return Image(uiImage: UIImage(data: data)!)
+        }
+        return nil
     }
 }

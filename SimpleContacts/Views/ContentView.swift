@@ -25,7 +25,7 @@ struct ContentView: View {
                     NavigationLink(destination: ContactDetailView(contact: contact)) {
                         // TODO: - Read jpeg image
                         // Image(systemName: "person.circle")
-                        self.getUIImageBy(contact.wrappedImageId)?
+                        Utilities.getImageBy(contact.wrappedImageId)?
                             .resizable()
                             .scaledToFit()
                             .frame(width: 80)
@@ -49,14 +49,6 @@ struct ContentView: View {
     }
     
     // Custom Funcs
-    
-    func getUIImageBy(_ uuid: String) -> Image? {
-        let fileUrl = Utilities.getDocumentsDirectory().appendingPathComponent(uuid)
-        if let data = try? Data(contentsOf: fileUrl) {
-            return Image(uiImage: UIImage(data: data)!)
-        }
-        return nil
-    }
     
     /// Delete selected row(s)
     func deleteRows(offsets: IndexSet) {
