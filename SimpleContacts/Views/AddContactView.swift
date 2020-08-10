@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct AddContactView: View {
+    @State private var blurredImage: Image?
     @State private var image: Image?
     @State private var name = ""
     @State private var showingImagePickerView = false
@@ -26,13 +27,21 @@ struct AddContactView: View {
             VStack {
                 HStack {
                     ZStack {
-                        Rectangle()
-                            .foregroundColor(.secondary)
+                        if (blurredImage == nil) {
+                            Rectangle()
+                                .foregroundColor(.secondary)
+                                .cornerRadius(6)
+                        }
+                        
+                        blurredImage?
+                            .resizable()
+                            .scaledToFill()
                             .cornerRadius(6)
                         
-                        image?
-                            .resizable()
-                            .scaledToFit()
+                        
+//                        image?
+//                            .resizable()
+//                            .scaledToFit()
                         
                         if (image == nil) {
                             Text("Select a photo")
@@ -66,7 +75,7 @@ struct AddContactView: View {
                 .disabled(self.addBtnDisabled)
             )
                 .sheet(isPresented: $showingImagePickerView) {
-                    ImagePickerView(image: self.$image)
+                    ImagePickerView(blurredImage: self.$blurredImage, image: self.$image)
             }
         }
     }
