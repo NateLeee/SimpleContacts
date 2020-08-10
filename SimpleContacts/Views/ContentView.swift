@@ -9,8 +9,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAddContactView = false
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List(0 ..< 18) { index in
+                NavigationLink(destination: ContactDetailView()) {
+                    Image(systemName: "person.circle")
+                    Text("No. \(index) Row.")
+                }
+            }
+            .navigationBarTitle("Simple Contacts")
+            .navigationBarItems(trailing: Button(action: {
+                self.showingAddContactView = true
+            }, label: {
+                Image(systemName: "plus")
+                    .padding([.leading, .top, .bottom])
+                    // .border(Color.blue, width: 1)
+            }))
+        }
+        .sheet(isPresented: $showingAddContactView) {
+            AddContactView()
+        }
     }
 }
 
