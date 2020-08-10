@@ -33,15 +33,15 @@ struct AddContactView: View {
                                 .cornerRadius(6)
                         }
                         
-                        blurredImage?
+                        //                        blurredImage?
+                        //                            .resizable()
+                        //                            .scaledToFill()
+                        //                            .cornerRadius(6)
+                        
+                        
+                        image?
                             .resizable()
-                            .scaledToFill()
-                            .cornerRadius(6)
-                        
-                        
-//                        image?
-//                            .resizable()
-//                            .scaledToFit()
+                            .scaledToFit()
                         
                         if (image == nil) {
                             Text("Select a photo")
