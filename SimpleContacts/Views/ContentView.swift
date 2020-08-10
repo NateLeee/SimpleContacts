@@ -9,14 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+
     @State private var showingAddContactView = false
+    
+    @FetchRequest(entity: Contact.entity(), sortDescriptors: []) var contacts: FetchedResults<Contact>
     
     var body: some View {
         NavigationView {
-            List(0 ..< 18, id: \.self) { index in
+            List(contacts, id: \.self) { contact in
                 NavigationLink(destination: ContactDetailView()) {
                     Image(systemName: "person.circle")
-                    Text("No. \(index) Row.")
+                    Text("Name: \(contact.name ?? "Unknown Name")")
                 }
             }
             .navigationBarTitle("Simple Contacts")
