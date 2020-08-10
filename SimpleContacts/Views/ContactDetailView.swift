@@ -18,7 +18,7 @@ struct ContactDetailView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Text("Name: \(self.contact.name ?? "Unknown Name...")")
+            Text("Name: \(self.contact.wrappedName)")
         }
         .alert(isPresented: $showingDeleteAlert) {
             Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
@@ -39,7 +39,10 @@ struct ContactDetailView: View {
     
     func deleteThisContact() {
         moc.delete(contact)
-        try? self.moc.save()
+        
+        if self.moc.hasChanges {
+            try? self.moc.save()
+        }
         
         presentationMode.wrappedValue.dismiss()
     }

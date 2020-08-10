@@ -17,6 +17,8 @@
 		FA1E760A24E0FB5C0019CF28 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E760924E0FB5C0019CF28 /* AddContactView.swift */; };
 		FA1E760C24E0FB750019CF28 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E760B24E0FB750019CF28 /* ContactDetailView.swift */; };
 		FA1E760E24E1018A0019CF28 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E760D24E1018A0019CF28 /* ImagePickerView.swift */; };
+		FAD1251024E147A900E13564 /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1250E24E147A900E13564 /* Contact+CoreDataClass.swift */; };
+		FAD1251124E147A900E13564 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		FA1E760924E0FB5C0019CF28 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		FA1E760B24E0FB750019CF28 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		FA1E760D24E1018A0019CF28 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		FAD1250E24E147A900E13564 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 		FA1E760824E0F90B0019CF28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAD1250E24E147A900E13564 /* Contact+CoreDataClass.swift */,
+				FAD1250F24E147A900E13564 /* Contact+CoreDataProperties.swift */,
 				FA1E75F424E0F8F60019CF28 /* SimpleContacts.xcdatamodeld */,
 			);
 			path = Models;
@@ -177,9 +183,11 @@
 				FA1E760C24E0FB750019CF28 /* ContactDetailView.swift in Sources */,
 				FA1E75F124E0F8F60019CF28 /* AppDelegate.swift in Sources */,
 				FA1E760A24E0FB5C0019CF28 /* AddContactView.swift in Sources */,
+				FAD1251124E147A900E13564 /* Contact+CoreDataProperties.swift in Sources */,
 				FA1E75F624E0F8F60019CF28 /* SimpleContacts.xcdatamodeld in Sources */,
 				FA1E760E24E1018A0019CF28 /* ImagePickerView.swift in Sources */,
 				FA1E75F824E0F8F60019CF28 /* ContentView.swift in Sources */,
+				FAD1251024E147A900E13564 /* Contact+CoreDataClass.swift in Sources */,
 				FA1E75F324E0F8F60019CF28 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

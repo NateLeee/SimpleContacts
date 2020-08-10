@@ -18,7 +18,7 @@ struct AddContactView: View {
     @State private var showingImagePickerView = false
     
     var addBtnDisabled: Bool {
-        // TODO: - If photo and name are both there, then false.
+        // If photo and name are both there, then false.
         if (image != nil && !name.isEmpty) {
             return false
         }

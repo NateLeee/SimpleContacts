@@ -24,7 +24,7 @@ struct ContentView: View {
                 ForEach(contacts, id: \.self) { contact in
                     NavigationLink(destination: ContactDetailView(contact: contact)) {
                         Image(systemName: "person.circle")
-                        Text("Name: \(contact.name ?? "Unknown Name")")
+                        Text("Name: \(contact.wrappedName)")
                     }
                 }
                 .onDelete(perform: deleteRows(offsets:))
@@ -53,7 +53,9 @@ struct ContentView: View {
         }
         
         // save the context
-        try? moc.save()
+        if self.moc.hasChanges {
+            try? moc.save()
+        }
     }
 }
 
