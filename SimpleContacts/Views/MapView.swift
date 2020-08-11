@@ -25,7 +25,15 @@ struct MapView: UIViewRepresentable {
         
         // Delegate funcs
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            let view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "placemark")
+            let identifier = "placemark"
+            
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            if view == nil {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                view?.annotation = annotation
+            }
             
             return view
         }
