@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct AddContactView: View {
     @Environment(\.managedObjectContext) var moc
@@ -18,6 +19,9 @@ struct AddContactView: View {
     @State private var name = ""
     @State private var showingImagePickerView = false
     @State private var showingMap = false
+    @State private var location: CLLocationCoordinate2D?
+    
+    let locationFetcher = LocationFetcher()
     
     var addBtnDisabled: Bool {
         // If photo and name are both there, then false.
@@ -73,9 +77,24 @@ struct AddContactView: View {
                         //.disabled(self.addBtnDisabled)
                         
                         if (self.showingMap) {
-                            MapView()
+                            MapView(locationFetcher: locationFetcher, title: $name, location: location)
                                 .frame(height: 180)
                                 .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                            
+                            HStack {
+                                Button(action: {
+                                    // Drop a pin annotation
+                                    if let location = self.locationFetcher.lastKnownLocation {
+                                        self.location = location
+                                    }
+                                    
+                                }) {
+                                    Image(systemName: "mappin.and.ellipse")
+                                        .foregroundColor(.red)
+                                }
+                                
+                                Text("Drop a pin")
+                            }
                         }
                     }
                     
