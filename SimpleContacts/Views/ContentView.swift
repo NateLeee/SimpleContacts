@@ -30,7 +30,13 @@ struct ContentView: View {
                             .scaledToFit()
                             .frame(width: 80)
                         
-                        Text("Name: \(contact.wrappedName)")
+                        VStack(alignment: .leading) {
+                            Text("Name")
+                            Text(contact.wrappedName)
+                                .font(.subheadline)
+                        }
+                        
+                        Divider() // Turns out this could be vertical!
                         
                         VStack(alignment: .leading) {
                             Text("Latitude: \(contact.latitude)")
