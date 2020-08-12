@@ -32,6 +32,8 @@ struct ContentView: View {
                         
                         VStack(alignment: .leading) {
                             Text("Name")
+                                .font(.caption)
+                            
                             Text(contact.wrappedName)
                                 .font(.subheadline)
                         }

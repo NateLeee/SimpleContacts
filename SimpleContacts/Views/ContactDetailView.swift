@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CoreData
+import CoreLocation
 
 struct ContactDetailView: View {
     @Environment(\.managedObjectContext) var moc
@@ -25,9 +26,15 @@ struct ContactDetailView: View {
                         .scaledToFit()
                         .clipShape(Circle())
                     
-                    Text("Contact Name: \(self.contact.wrappedName)")
-                    
-                    Spacer()
+                    ZStack {
+                        Text("Contact Name: \(self.contact.wrappedName)")
+                        
+                        MapView(
+                            locationFetcher: nil,
+                            title: self.contact.wrappedName,
+                            location: CLLocationCoordinate2D(latitude: self.contact.latitude, longitude: self.contact.longitude)
+                        )
+                    }
                 }
             }
         }
@@ -42,7 +49,7 @@ struct ContactDetailView: View {
         }) {
             Image(systemName: "trash")
                 .padding([.leading, .top, .bottom])
-                // .border(Color.blue, width: 1)
+            // .border(Color.blue, width: 1)
         })
     }
     

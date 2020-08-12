@@ -12,8 +12,8 @@ import SwiftUI
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
-    let locationFetcher: LocationFetcher
-    @Binding var title: String
+    let locationFetcher: LocationFetcher?
+    var title: String
     var location: CLLocationCoordinate2D?
     
     class Coordinator: NSObject, MKMapViewDelegate {
@@ -51,7 +51,7 @@ struct MapView: UIViewRepresentable {
         mkMapView.delegate = context.coordinator
         
         // Fetch location starting...
-        locationFetcher.start()
+        locationFetcher?.start()
         return mkMapView
     }
     

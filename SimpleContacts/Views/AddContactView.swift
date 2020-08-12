@@ -77,7 +77,7 @@ struct AddContactView: View {
                         .disabled(self.addBtnDisabled)
                         
                         if (self.showingMap) {
-                            MapView(locationFetcher: locationFetcher, title: $name, location: location)
+                            MapView(locationFetcher: locationFetcher, title: name, location: location)
                                 .frame(height: 180)
                                 .transition(.asymmetric(insertion: .scale, removal: .opacity))
                             
