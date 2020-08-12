@@ -74,7 +74,7 @@ struct AddContactView: View {
                         Toggle(isOn: $showingMap.animation()) {
                             Text("Remember this location / Show Map")
                         }
-                        //.disabled(self.addBtnDisabled)
+                        .disabled(self.addBtnDisabled)
                         
                         if (self.showingMap) {
                             MapView(locationFetcher: locationFetcher, title: $name, location: location)

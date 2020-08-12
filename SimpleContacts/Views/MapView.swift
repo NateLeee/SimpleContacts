@@ -61,6 +61,11 @@ struct MapView: UIViewRepresentable {
     
     private func addPin(mapView: MKMapView, title: String, coordinate: CLLocationCoordinate2D?) {
         if let coordinate = coordinate {
+            // Clear other annotation(s) if there is any
+            let annos = mapView.annotations
+            mapView.removeAnnotations(annos)
+            
+            // Add this new one!
             let annotation = MKPointAnnotation()
             annotation.title = title
             annotation.coordinate = coordinate
