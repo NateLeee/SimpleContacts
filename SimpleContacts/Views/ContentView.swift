@@ -31,6 +31,15 @@ struct ContentView: View {
                             .frame(width: 80)
                         
                         Text("Name: \(contact.wrappedName)")
+                        
+                        VStack(alignment: .leading) {
+                            Text("Latitude: \(contact.latitude)")
+                                .font(.subheadline)
+                            
+                            Text("Longitude: \(contact.longitude)")
+                                .font(.subheadline)
+                            
+                        }
                     }
                 }
                 .onDelete(perform: deleteRows(offsets:))

@@ -108,8 +108,15 @@ struct AddContactView: View {
                 // Add this contact
                 let newContact = Contact(context: self.moc)
                 let uuid = UUID()
+                
                 newContact.imageId = uuid
                 newContact.name = self.name
+                // Save the location: CLLocationCoordinate2D?
+                if let location = self.location {
+                    newContact.latitude = location.latitude
+                    newContact.longitude = location.longitude
+                }
+                
                 try? self.moc.save()
                 
                 // Save image to the disk
