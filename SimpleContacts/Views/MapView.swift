@@ -70,6 +70,9 @@ struct MapView: UIViewRepresentable {
             annotation.title = title
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
+            
+            // Zoom to fit this pin
+            mapView.showAnnotations(mapView.annotations, animated: true)
         }
     }
 }
