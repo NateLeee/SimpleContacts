@@ -65,8 +65,11 @@ struct ImagePickerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let uiImagePickerController = UIImagePickerController()
         
-        #warning("Uncomment this when running on a physical device!")
-        // uiImagePickerController.sourceType = .camera
+        #if targetEnvironment(simulator)
+        // your simulator code
+        #else
+        uiImagePickerController.sourceType = .camera
+        #endif
         
         uiImagePickerController.delegate = context.coordinator
         

@@ -25,31 +25,40 @@ struct ContactDetailView: View {
                         .resizable()
                         .scaledToFit()
                         .clipShape(Circle())
+                        .padding(.top)
                     
-                    ZStack {
-                        Text("Contact Name: \(self.contact.wrappedName)")
-                        
+                    ZStack(alignment: .topLeading) {
                         MapView(
                             locationFetcher: nil,
                             title: self.contact.wrappedName,
                             location: CLLocationCoordinate2D(latitude: self.contact.latitude, longitude: self.contact.longitude)
                         )
+                        
+                        Text("Contact Name: \(self.contact.wrappedName)")
+                            .underline()
+                            .foregroundColor(.secondary)
+                            .padding([.top, .leading])
                     }
+                    .frame(height: 300)
+                    
+                    Spacer()
                 }
+                // .border(Color.red, width: 1)
             }
         }
-        .alert(isPresented: $showingDeleteAlert) {
-            Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
-                self.deleteThisContact()
-                }, secondaryButton: .cancel()
-            )
+            // .border(Color.yellow, width: 1)
+            .alert(isPresented: $showingDeleteAlert) {
+                Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                    self.deleteThisContact()
+                    }, secondaryButton: .cancel()
+                )
         }
+        .navigationBarTitle("\(contact.wrappedName)", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             self.showingDeleteAlert = true
         }) {
             Image(systemName: "trash")
                 .padding([.leading, .top, .bottom])
-            // .border(Color.blue, width: 1)
         })
     }
     
