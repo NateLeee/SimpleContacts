@@ -43,18 +43,16 @@ struct ContactDetailView: View {
                     
                     Spacer()
                 }
-                // .border(Color.red, width: 1)
             }
         }
-            // .border(Color.yellow, width: 1)
-            .alert(isPresented: $showingDeleteAlert) {
-                Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
-                    self.deleteThisContact()
-                    }, secondaryButton: .cancel()
-                )
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Delete this contact"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                self.deleteThisContact()
+                }, secondaryButton: .cancel()
+            )
         }
         .navigationBarTitle("\(contact.wrappedName)", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
+        .navigationBarItems(trailing: Button(action: { // 🗑 Delete button
             self.showingDeleteAlert = true
         }) {
             Image(systemName: "trash")

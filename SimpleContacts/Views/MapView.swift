@@ -24,6 +24,11 @@ struct MapView: UIViewRepresentable {
         }
         
         // Delegate funcs
+        
+        func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+            parent.addPin(mapView: mapView, title: parent.title, coordinate: parent.location)
+        }
+        
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             let identifier = "placemark"
             
@@ -56,7 +61,10 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        addPin(mapView: uiView, title: title, coordinate: location)
+        if (uiView.annotations.count == 0) {
+            print("▶️ addPin() in MapView.")
+            addPin(mapView: uiView, title: title, coordinate: location)
+        }
     }
     
     private func addPin(mapView: MKMapView, title: String, coordinate: CLLocationCoordinate2D?) {
